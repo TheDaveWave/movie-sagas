@@ -18,6 +18,7 @@ function* rootSaga() {
     yield takeEvery('GET_MOVIE_DEETS', getMovieDetails);
     yield takeEvery('GET_GENRES', fetchAllGenres);
     yield takeEvery('GET_MOVIE_GENRES', getMovieGenres);
+    yield takeEvery('ADD_MOVIE', postMovie);
 }
 
 function* fetchAllMovies() {
@@ -60,6 +61,16 @@ function* getMovieGenres(action) {
         yield put({type: 'SET_MOVIE_GENRES', payload: response.data});
     } catch (err) {
         console.log('Error in getting genres for this movie', err);
+    }
+}
+
+// Saga to POST a new movie to the database.
+function* postMovie(action) {
+    try {
+        yield axios.post(`/api/movie`, {movie: action.payload});
+        yield put({type: 'FETCH_MOVIES'});
+    } catch(err) {
+        console.log('Error in postMovie', err);
     }
 }
 

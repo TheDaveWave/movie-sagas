@@ -12,10 +12,20 @@ function MovieForm() {
 
     // get access to the store of genres.
     const genres = useSelector(store => store.genres);
-
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // define object to POST to database.
+    const movieObj = {
+        title: titleInput,
+        poster: urlInput,
+        description: descInput,
+        genre_id: selGenreId
+    }
+
+    const saveMovie = () => {
+        
+    }
 
 
     // fetch genres on page load.
