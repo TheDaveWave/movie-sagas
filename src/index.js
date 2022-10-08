@@ -15,7 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     // takeEvery for getting movie details.
-    yield takeEvery('GET_MOVIE_DEETS', getMovieDetails);
+    // yield takeEvery('GET_MOVIE_DEETS', getMovieDetails);
 }
 
 function* fetchAllMovies() {
@@ -33,15 +33,15 @@ function* fetchAllMovies() {
 
 // Saga for getting movie details with id.
 // MAYBE delete this.
-function* getMovieDetails() {
-    try {
-        // send get request to /api/movie/:movieId route.
-        const response = yield axios.get(`/api/movie/${action.payload.movieId}`);
-        yield put({type: 'SET_MOVIE_DEETS', payload: response.data});
-    } catch(err) {
-        console.log('Error getting movie deets', err);
-    }
-}
+// function* getMovieDetails() {
+//     try {
+//         // send get request to /api/movie/:movieId route.
+//         const response = yield axios.get(`/api/movie/${action.payload.movieId}`);
+//         yield put({type: 'SET_MOVIE_DEETS', payload: response.data});
+//     } catch(err) {
+//         console.log('Error getting movie deets', err);
+//     }
+// }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
