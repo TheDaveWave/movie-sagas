@@ -15,7 +15,7 @@ function App() {
         {/* <Route path='/details'>
           <Details />
         </Route> */}
-        <Route path='/details/:movieid'>
+        <Route path='/details/:movieId'>
           {/* Details page */}
           <Details />
         </Route>

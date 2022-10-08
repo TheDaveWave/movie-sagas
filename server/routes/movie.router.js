@@ -16,6 +16,8 @@ router.get('/', (req, res) => {
 
 });
 
+
+// MAYBE Delete this
 // GET request to retrieve a movie with given id.
 router.get('/:movieId', (req, res) => {
   console.log('GET movie with id:', req.params);

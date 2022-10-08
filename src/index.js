@@ -32,6 +32,7 @@ function* fetchAllMovies() {
 }
 
 // Saga for getting movie details with id.
+// MAYBE delete this.
 function* getMovieDetails() {
     try {
         // send get request to /api/movie/:movieId route.

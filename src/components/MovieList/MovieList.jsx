@@ -24,7 +24,7 @@ function MovieList() {
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             {/* When image is clicked, push to the details page. */}
-                            <img onClick={() => history.push('/details')} src={movie.poster} alt={movie.title}/>
+                            <img onClick={() => history.push(`/details/${movie.id}`)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}
