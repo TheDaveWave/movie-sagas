@@ -35,6 +35,9 @@ function MovieForm() {
         setTitleInput('');
         setUrlInput('');
         setDescInput('');
+
+        // bring user to movie list page.
+        history.push('/');
     }
 
 
