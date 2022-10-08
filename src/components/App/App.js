@@ -12,7 +12,10 @@ function App() {
         <Route path="/" exact>
           <MovieList />
         </Route>
-        <Route path='/details'>
+        {/* <Route path='/details'>
+          <Details />
+        </Route> */}
+        <Route path='/details/:movieid'>
           {/* Details page */}
           <Details />
         </Route>
