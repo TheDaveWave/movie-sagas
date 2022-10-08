@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 function Details() {
     // get the current store of movie objects from the movies reducer.
     const movie = useSelector(store => store.movieDetails);
     const movieGenres = useSelector(store => store.movieGenres);
+    // setup history from useHistory()
+    const history = useHistory();
     // setup dispatch from useDispatch()
     const dispatch = useDispatch();
     // get the movie id from the route url params
@@ -45,7 +47,7 @@ function Details() {
                         <p>{name.genre}</p>
                     ))}
                 </div>
-                <button onClick={() => history.go(-1)}>Back to List</button>
+                <button onClick={() => history.push('/')}>Back to List</button>
             </div>
         </section>
     );
