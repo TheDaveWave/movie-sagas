@@ -9,8 +9,9 @@ function Details() {
     const dispatch = useDispatch();
     // get the movie id from the route url params
     let { movieId } = useParams(); 
-    console.log(movieId);
+    // console.log(movieId);
 
+    // fetch the movie with the movieId from the params on load.
     useEffect(() => {
         dispatch({
             type: 'GET_MOVIE_DEETS',
@@ -18,10 +19,7 @@ function Details() {
         });
     }, []);
 
-    // get the movie with the matching id from the movies array.
-    // let movie = movies.find(movie => movie.id === Number(movieId));
-    // movie = movie[0];
-    console.log(movie);
+    // console.log(movie);
 
     if(movie === undefined) {
         return <h2>Movie not found</h2>
