@@ -85,6 +85,16 @@ const movieDetails = (state = {}, action) => {
     }
 }
 
+// Used to store the genres of a specific movie.
+const movieGenres = (state = [], action) => {
+    switch(action.type) {
+        case 'SET_MOVIE_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
