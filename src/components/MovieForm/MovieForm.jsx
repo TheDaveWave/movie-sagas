@@ -24,6 +24,8 @@ function MovieForm() {
     }
 
     const saveMovie = () => {
+        // add checks to ensure inputs are not empty.
+
         // dispatch new movie to sagas.
         dispatch({
             type: 'ADD_MOVIE',
