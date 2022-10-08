@@ -24,7 +24,17 @@ function MovieForm() {
     }
 
     const saveMovie = () => {
-        
+        // dispatch new movie to sagas.
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: movieObj
+        });
+
+        // reset inputs.
+        setSelGenreId('');
+        setTitleInput('');
+        setUrlInput('');
+        setDescInput('');
     }
 
 
@@ -50,7 +60,7 @@ function MovieForm() {
             </div>
             <div>
                 <button onClick={() => history.push('/')}>Cancel</button>
-                <button>Save</button>
+                <button onClick={() => saveMovie()}>Save</button>
             </div>
         </section>
     );

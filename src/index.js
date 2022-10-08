@@ -67,7 +67,7 @@ function* getMovieGenres(action) {
 // Saga to POST a new movie to the database.
 function* postMovie(action) {
     try {
-        yield axios.post(`/api/movie`, {movie: action.payload});
+        yield axios.post(`/api/movie`, action.payload);
         yield put({type: 'FETCH_MOVIES'});
     } catch(err) {
         console.log('Error in postMovie', err);
