@@ -16,6 +16,24 @@ router.get('/', (req, res) => {
 
 });
 
+// GET request to retrieve a movie with given id.
+router.get('/:movieId', (req, res) => {
+  console.log('GET movie with id:', req.params);
+  // set variable to the request params.
+  const movieId = req.params.movieId;
+  // SQL query text with data sanitization.
+  const queryText = `SELECT * FROM "movies" WHERE "id"=$1;`;
+  pool.query(queryText, [movieId])
+  .then(response => {
+    console.log('Received movie', response.rows);
+    res.send(response.rows);
+  })
+  .catch(err => {
+    console.log(`Error in GET for movie with id:${movieId}`);
+    res.sendStatus(500);
+  });
+});
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
