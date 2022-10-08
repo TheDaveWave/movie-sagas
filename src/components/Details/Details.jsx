@@ -44,7 +44,7 @@ function Details() {
                 <div>
                     <p>Genres:</p>
                     {movieGenres.map(name => (
-                        <p>{name.genre}</p>
+                        <p key={name.id}>{name.genre}</p>
                     ))}
                 </div>
                 <button onClick={() => history.push('/')}>Back to List</button>
