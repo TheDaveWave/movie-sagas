@@ -17,6 +17,7 @@ function* rootSaga() {
     // takeEvery for getting movie details.
     yield takeEvery('GET_MOVIE_DEETS', getMovieDetails);
     yield takeEvery('GET_GENRES', fetchAllGenres);
+    yield takeEvery('GET_MOVIE_GENRES', getMovieGenres);
 }
 
 function* fetchAllMovies() {
@@ -49,6 +50,16 @@ function* getMovieDetails(action) {
         yield put({type: 'SET_MOVIE_DEETS', payload: response.data});
     } catch(err) {
         console.log('Error getting movie deets', err);
+    }
+}
+
+// Saga to get a specified movie's genres.
+function* getMovieGenres(action) {
+    try {
+        const response = yield axios.get(`/api/genre/${action.payload}`);
+        yield put({type: 'SET_MOVIE_GENRES', payload: response.data});
+    } catch (err) {
+        console.log('Error in getting genres for this movie', err);
     }
 }
 
@@ -100,7 +111,8 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        movieDetails
+        movieDetails,
+        movieGenres
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
