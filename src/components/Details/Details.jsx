@@ -34,14 +34,18 @@ function Details() {
     return (
         <section>
             <div>
-                <h1>This is the details page.</h1>
-                <h2>{movie.title}</h2>
-                <img src={movie.poster}/>
-                <p>{movie.description}</p>
-                <p>Genres:</p>
-                {movieGenres.map(name => (
-                    <p>{name.genre}</p>
-                ))}
+                <div>
+                    <h1>{movie.title}</h1>
+                    <img src={movie.poster}/>
+                    <p>{movie.description}</p>
+                </div>
+                <div>
+                    <p>Genres:</p>
+                    {movieGenres.map(name => (
+                        <p>{name.genre}</p>
+                    ))}
+                </div>
+                <button onClick={() => history.go(-1)}>Back to List</button>
             </div>
         </section>
     );
