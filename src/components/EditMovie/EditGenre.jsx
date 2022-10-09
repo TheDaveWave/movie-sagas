@@ -32,7 +32,7 @@ function EditGenre({genre}) {
                     <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}
                 </select> 
-                <button onClick={() => removeGenre}>Delete</button>
+                <button onClick={() => removeGenre()}>Delete</button>
                 <button onClick={() => setEditGenre(false)}>Cancel</button>
             </> : 
             <button onClick={() => setEditGenre(true)}>Edit</button>}

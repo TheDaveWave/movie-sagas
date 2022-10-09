@@ -49,7 +49,7 @@ router.delete('/remove', (req, res) => {
 router.get('/:movieId', (req, res) => {
   // set movieId to req.params.movieId
   const movieId = req.params.movieId;
-  console.log(movieId);
+  console.log(req.params);
   // setup SQL query statement.
   const queryText = `SELECT "mg"."id",
   "mg"."genre_id",
