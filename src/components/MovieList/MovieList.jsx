@@ -16,10 +16,14 @@ function MovieList() {
 
     // dispatch to search movie name.
     const searchMovie = () => {
-        dispatch({
-            type: 'SEARCH_MOVIE',
-            payload: search
-        });
+        if(search === '') {
+            alert('Please enter a movie title.');
+        } else {
+            dispatch({
+                type: 'SEARCH_MOVIE',
+                payload: search
+            });
+        }
     }
 
     const clearSearch = () => {
@@ -35,15 +39,25 @@ function MovieList() {
     return (
         <main>
             <header className='list-header'>
-                <h1>MovieList</h1>
-                <button onClick={() => history.push('/form')}>Add a Movie</button>
-                <div>
-                    <input type='text' value={search} onChange={evt => setSearch(evt.target.value)} placeholder='Search'/>
-                    <button onClick={() => searchMovie()}>Confirm</button>
-                    <button onClick={() => clearSearch()}>Clear</button>
+                <div className='header-container'>
+                    <div></div>
+                    <div>
+                        <h1>Movie List</h1>
+                        <div className='search'>
+                            <div>
+                            <input type='text' value={search} onChange={evt => setSearch(evt.target.value)} placeholder='Search'/>
+                            </div>
+                        <button className='arrow-btn' onClick={() => searchMovie()}>➔</button>
+                        <button onClick={() => clearSearch()}>Clear</button>
+                        </div>
+                    </div>
+                    <div className='add-btn'>
+                        <button onClick={() => history.push('/form')}>+</button>
+                    </div>
                 </div>
             </header>
             <section className="movies">
+                <div>
                 <div className='movie-container'>
                     {searchedMovie.length !== 0 ? 
                     <div className='movie-card'>
@@ -61,6 +75,7 @@ function MovieList() {
                             );
                         })}
                     </>}
+                </div>
                 </div>
             </section>
         </main>

@@ -1,16 +1,137 @@
-.movies {
+html, body {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background-color: #17A398;
+}
+
+.list-header {
+    background-color: #F17F29;
+    height: 120px;
+    padding: 0px 0;
+    box-shadow: 0px 4px 4px #2f2f2d;
+}
+
+.list-header h1{
     margin: 0 auto;
+    margin-top: 10px;
+}
+
+.header-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.search {
+    margin: 10px 0;
+}
+
+.search input {
+    color: #FFEEDB
+}
+
+.search input, button {
+    margin: auto 10px;
+}
+
+.search button {
+    cursor: pointer;
+    margin-top: 5px;
+    background-color: transparent;
+    border: none;
+    font-weight: bolder;
+}
+
+.arrow-btn {
+    font-size: 100%;
+}
+
+.search input {
+    /* background-color: #FFEEDB; */
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #2f2f2d;
+    box-shadow: inset 0px -1px 0px #dd7220;
+}
+
+.search input::placeholder {
+    color: #FFEEDB;
+}
+
+
+.add-btn {
+    right: 20px;
+    height: 100%;
+}
+
+.add-btn button {
+    width: 70px;
+    cursor: pointer;
+    height: 100%;
+    border: 0px solid #F17F29;
+    background-color: #F17F29;
+    color: #ebece0;
+    text-emphasis: bold;
+    transition: 0.2s;
+    font-size: 200%;
+    background-clip: text;
+}
+
+.add-btn button:hover {
+    transition: 0.2s;
+    border: 0px solid #F17F29;
+    box-shadow: 
+        inset 0px 0px 3px #dd7220,
+        inset 0px 0px 3px #dd7220,
+        inset 0px 0px 5px #d06b1e,
+        inset 0px 0px 8px #c6661c,
+        inset 0px 0px 12px #b75e1a;
+    color: transparent;
+    text-shadow: 
+        1px 1px 0px #e3e4d9;
+}
+
+.movies {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 0% 7%;
 }
 
 .movie-container {
     display : flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: baseline;
     align-items: flex-start;
 }
 
 .movie-card {
-    width: 195px;
-    background-color: blue;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width: 205px;
+    height: 278px;
+    background-color: #F6F7EB;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px #ebece0,
+    4px 4px 6px #2f2f2d;
+    transition: all 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.2);
+    z-index: 2;
+}
+
+.movie-card img {
+    cursor: pointer;
+    border: 1px solid #ebece0;
+    margin: auto auto;
+    width: 185px;
+    height: 258px;
 }
