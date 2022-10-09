@@ -19,6 +19,7 @@ function* rootSaga() {
     yield takeEvery('GET_GENRES', fetchAllGenres);
     yield takeEvery('GET_MOVIE_GENRES', getMovieGenres);
     yield takeEvery('ADD_MOVIE', postMovie);
+    yield takeEvery('GIVE_MOVIE_GENRE', addGenreToMovie);
 }
 
 function* fetchAllMovies() {
@@ -71,6 +72,16 @@ function* postMovie(action) {
         yield put({type: 'FETCH_MOVIES'});
     } catch(err) {
         console.log('Error in postMovie', err);
+    }
+}
+
+// Saga to add a genre to an existing movie.
+function* addGenreToMovie(action) {
+    try {
+        yield axios.post(`/api/genre/add`, action.payload);
+        yield put({type: 'GET_GENRES'});
+    } catch(err) {
+        console.log('Error adding new genre to movie', err);
     }
 }
 
