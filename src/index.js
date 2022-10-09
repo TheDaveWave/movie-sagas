@@ -92,10 +92,9 @@ function* addGenreToMovie(action) {
 // Saga to delete a genre from a movie.
 function* removeGenre(action) {
     try {
-        yield console.log(action.payload);
-        // const moveId = action.payload.movie_id;
-        yield axios.delete(`/api/genre/remove`, action.payload);
-        // yield put({type: 'GET_MOVIE_GENRES'});
+        // yield console.log(action.payload);
+        // need to have data key in payload for delete request.
+        yield axios.delete(`/api/genre/remove`, {data: action.payload});
         yield put({type: 'GET_GENRES_FOR_MOVIE'});
     } catch (err) {
         console.log('error in removing genre from movie', err);
