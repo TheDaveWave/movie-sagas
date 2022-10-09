@@ -57,7 +57,7 @@ function MovieForm() {
                 <input type='text' placeholder='Title' value={titleInput} onChange={evt => setTitleInput(evt.target.value)}/>
                 <input type='url' placeholder='Poster URL' value={urlInput} onChange={evt => setUrlInput(evt.target.value)}/>
                 <textarea id='form-text' name='form-text' rows='8' cols='50' value={descInput} onChange={evt => setDescInput(evt.target.value)}></textarea>
-                <select id='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
+                <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
                     {genres.map(genre => (
                         <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}

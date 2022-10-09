@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import EditGenre from "./EditGenre";
 
 function EditMovie() {
     // use object destructuring to pull out reducers from store.
@@ -18,6 +19,14 @@ function EditMovie() {
     // get the movie id from the route url params
     let {movieId} = useParams();
     // console.log(movieId);
+
+    // define object to PUT / Update the database entry.
+    const movieObj = {
+        title: titleInput,
+        poster: urlInput,
+        description: descInput,
+        genre_id: selGenreId
+    }
 
     useEffect(() => {
         // fetch the movie with the movieId from the params on load.
@@ -49,15 +58,22 @@ function EditMovie() {
                 <div>
                     <p>Genres:</p>
                     {movieGenres.map(name => (
-                        <p key={name.id}>{name.genre}</p>
+                        <div key={name.id}>
+                            <div>{name.genre} {' '}
+                                <EditGenre genres={genres}/>
+                            </div>
+                        </div>
                     ))}
                 </div>
-                <select id='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
+                <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
                     {genres.map(genre => (
                         <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}
                 </select>
-                <button onClick={() => history.push(`/details/${movieId}`)}>Cancel</button>
+                <button>Add Genre</button>
+                <div>
+                    <button onClick={() => history.push(`/details/${movieId}`)}>Cancel</button>
+                </div>
             </div>
         </section>
     );
