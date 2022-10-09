@@ -47,14 +47,14 @@ function MovieList() {
                 <div className='movie-container'>
                     {searchedMovie.length !== 0 ? 
                     <div className='movie-card'>
-                        <h3>{searchedMovie[0].title}</h3>
+                        {/* <h3>{searchedMovie[0].title}</h3> */}
                         <img onClick={() => history.push(`/details/${searchedMovie[0].id}`)} src={searchedMovie[0].poster} alt={searchedMovie[0].title}/>
                     </div> : 
                     <>
                         {movies.map(movie => {
                             return (
                                 <div className='movie-card' key={movie.id} >
-                                    <h3>{movie.title}</h3>
+                                    {/* <h3>{movie.title}</h3> */}
                                     {/* When image is clicked, push to the details page. */}
                                     <img onClick={() => history.push(`/details/${movie.id}`)} src={movie.poster} alt={movie.title}/>
                                 </div>

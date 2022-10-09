@@ -32,7 +32,7 @@ function EditMovie() {
     // dispatch to put request to update the movie.
     const editMovie = () => {
         // check to see if data is valid before dispatching.
-        if(!movieId || !titleInput || !poster || !descInput) {
+        if(!movieId || !titleInput || !urlInput || !descInput) {
             alert('Please fill in all inputs.');
         } else {
             dispatch({
@@ -44,7 +44,7 @@ function EditMovie() {
         }
     }
 
-    console.log(movieObj);
+    // console.log(movieObj);
 
     // function to add genre to current movie.
     const addNewGenre = () => {

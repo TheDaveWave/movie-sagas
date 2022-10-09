@@ -1,4 +1,16 @@
 .movies {
+    margin: 0 auto;
+}
+
+.movie-container {
     display : flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.movie-card {
+    width: 195px;
+    background-color: blue;
+    margin-top: 10px;
 }
