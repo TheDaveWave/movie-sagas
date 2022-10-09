@@ -14,6 +14,7 @@ function EditGenre({genres}) {
                     <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}
                 </select> 
+                <button>Delete</button>
                 <button onClick={() => setEditGenre(false)}>Cancel</button>
             </> : 
             <button onClick={() => setEditGenre(true)}>Edit</button>}
