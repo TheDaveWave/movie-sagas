@@ -12,9 +12,9 @@ function EditMovie() {
     
     // setup local state for inputs.
     const [selGenreId, setSelGenreId] = useState('');
-    const [titleInput, setTitleInput] = useState(movieDetails.title);
-    const [urlInput, setUrlInput] = useState(movieDetails.poster);
-    const [descInput, setDescInput] = useState(movieDetails.description);
+    const [titleInput, setTitleInput] = useState('');
+    const [urlInput, setUrlInput] = useState('');
+    const [descInput, setDescInput] = useState('');
 
     // get the movie id from the route url params
     let {movieId} = useParams();
