@@ -1,15 +1,32 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 
 function MovieList() {
+    const searchedMovie = useSelector(store => store.search);
+    const [search, setSearch] = useState('');
 
     // setup variable to use useHistory().
     const history = useHistory();
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
+
+    // dispatch to search movie name.
+    const searchMovie = () => {
+        dispatch({
+            type: 'SEARCH_MOVIE',
+            payload: search
+        });
+    }
+
+    const clearSearch = () => {
+        dispatch({type: 'CLEAR_SEARCH'});
+        // clear input.
+        setSearch('');
+    }
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -19,6 +36,11 @@ function MovieList() {
         <main>
             <h1>MovieList</h1>
             <button onClick={() => history.push('/form')}>Add a Movie</button>
+            <div>
+                <input type='text' value={search} onChange={evt => setSearch(evt.target.value)} placeholder='Search'/>
+                <button onClick={() => searchMovie()}>Confirm</button>
+                <button onClick={() => clearSearch()}>Clear</button>
+            </div>
             <section className="movies">
                 {movies.map(movie => {
                     return (

@@ -102,6 +102,7 @@ function* updateMovie(action) {
         yield put({type: 'GET_MOVIE_DEETS', payload: action.payload.movieId});
     } catch (err) {
         console.log('Error in updating movie in saga', err);
+        alert('Could not find movie.');
     }
 }
 
