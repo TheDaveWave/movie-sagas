@@ -141,7 +141,7 @@ const genres = (state = [], action) => {
 const movieDetails = (state = {}, action) => {
     // somehow get a reducer to store current movie id to use in requests?
     // or get setup a type clear and store data in reducer
-    console.log(state);
+    // console.log(state);
     switch(action.type) {
         case 'SET_MOVIE_DEETS':
             return {...state, ...action.payload};
