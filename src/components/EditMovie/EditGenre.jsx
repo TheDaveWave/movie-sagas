@@ -7,12 +7,13 @@ function EditGenre({genre}) {
     const [editGenre, setEditGenre] = useState(false);
     const [selGenreId, setSelGenreId] = useState('');
 
-    const { movieId } = useParams();
     const dispatch = useDispatch();
+    const { movieId } = useParams();
     // console.log(movieId);
 
     // remove a genre from the movie.
     const removeGenre = () => {
+        console.log(movieId);
         dispatch({
             type: 'REMOVE_MOVIE_GENRE',
             payload: {

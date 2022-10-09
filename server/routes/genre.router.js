@@ -34,7 +34,7 @@ router.post('/add', (req, res) => {
 router.delete('/remove', (req, res) => {
   const queryText = `DELETE FROM "movies_genres" 
   WHERE "movie_id"=$1 AND "genre_id"=$2`;
-  console.log('in DELETE', req.body);
+  console.log('in DELETE for /remove', req.body);
   pool.query(queryText, [req.body.movie_id, req.body.genre_id])
   .then(() => {
     res.sendStatus(201);
