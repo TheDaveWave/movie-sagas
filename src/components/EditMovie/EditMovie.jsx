@@ -9,7 +9,8 @@ function EditMovie() {
     const { movieDetails, movieGenres, genres } = useSelector(store => store);
     const dispatch = useDispatch();
     const history = useHistory();
-    
+    console.log('movieDetails:', movieDetails.title, movieDetails.poster, movieDetails.description);
+
     // setup local state for inputs.
     const [selGenreId, setSelGenreId] = useState('');
     const [titleInput, setTitleInput] = useState(movieDetails.title);
@@ -50,16 +51,19 @@ function EditMovie() {
             payload: Number(movieId)
         });
         dispatch({type: 'GET_GENRES'});
-        dispatch({type: 'GET_GENRES_FOR_MOVIE'});
-
+        // dispatch({type: 'GET_GENRES_FOR_MOVIE'});
+        console.log(movieDetails);
         // set inputs to corresponding values.
-        setTitleInput(movieDetails.title);
-        setUrlInput(movieDetails.poster);
-        setDescInput(movieDetails.description);
+        if(movieDetails.length > 0) {
+            setTitleInput(movieDetails.title);
+            setUrlInput(movieDetails.poster);
+            setDescInput(movieDetails.description);
+        }
         if(genres.length > 0) {
             setSelGenreId(genres[0].id);
         }
     }, []);
+    
 
     return (
         <section>

@@ -81,9 +81,10 @@ function* postMovie(action) {
 function* addGenreToMovie(action) {
     try {
         yield axios.post(`/api/genre/add`, action.payload);
+        yield console.log(action.payload);
         // since the dispatch does not have the movieId??? Need a new reducer for getting genres again.
-        // yield put({type: 'GET_MOVIE_GENRES'}); // does this not work because of req.params?
-        yield put({type: 'GET_GENRES_FOR_MOVIE'});
+        yield put({type: 'GET_MOVIE_GENRES', payload: action.payload.movie_id}); // does this not work because of req.params?
+        // yield put({type: 'GET_GENRES_FOR_MOVIE'});
     } catch(err) {
         console.log('Error adding new genre to movie', err);
     }
@@ -95,7 +96,8 @@ function* removeGenre(action) {
         // yield console.log(action.payload);
         // need to have data key in payload for delete request.
         yield axios.delete(`/api/genre/remove`, {data: action.payload});
-        yield put({type: 'GET_GENRES_FOR_MOVIE'});
+        yield put({type: 'GET_MOVIE_GENRES', payload: action.payload.movie_id});
+        // yield put({type: 'GET_GENRES_FOR_MOVIE'});
     } catch (err) {
         console.log('error in removing genre from movie', err);
     }
@@ -126,9 +128,12 @@ const genres = (state = [], action) => {
 
 // Used to store the movie object to be desplayed on the details page.
 const movieDetails = (state = {}, action) => {
+    // somehow get a reducer to store current movie id to use in requests?
+    // or get setup a type clear and store data in reducer
+    console.log(state);
     switch(action.type) {
         case 'SET_MOVIE_DEETS':
-            return action.payload;
+            return {...state, ...action.payload};
         default:
             return state;
     }
@@ -137,7 +142,6 @@ const movieDetails = (state = {}, action) => {
 // Used to store the genres of a specific movie.
 const movieGenres = (state = [], action) => {
     switch(action.type) {
-        // somehow get a reducer to store current movie id to use in requests?
         case 'SET_MOVIE_GENRES':
             return action.payload;
         case 'GET_GENRES_FOR_MOVIE':
