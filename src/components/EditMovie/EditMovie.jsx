@@ -73,7 +73,7 @@ function EditMovie() {
                     {movieGenres.map(name => (
                         <div key={name.id}>
                             <div>{name.genre} {' '}
-                                <EditGenre genre={name}/>
+                                <EditGenre name={name}/>
                             </div>
                         </div>
                     ))}

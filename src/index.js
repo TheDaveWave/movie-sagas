@@ -81,7 +81,7 @@ function* postMovie(action) {
 function* addGenreToMovie(action) {
     try {
         yield axios.post(`/api/genre/add`, action.payload);
-        // since the dispatch does not have the movieId??? Need a reducer for getting again.
+        // since the dispatch does not have the movieId??? Need a new reducer for getting genres again.
         // yield put({type: 'GET_MOVIE_GENRES'}); // does this not work because of req.params?
         yield put({type: 'GET_GENRES_FOR_MOVIE'});
     } catch(err) {
@@ -92,7 +92,8 @@ function* addGenreToMovie(action) {
 // Saga to delete a genre from a movie.
 function* removeGenre(action) {
     try {
-        yield console.log(action);
+        yield console.log(action.payload);
+        // const moveId = action.payload.movie_id;
         yield axios.delete(`/api/genre/remove`, action.payload);
         // yield put({type: 'GET_MOVIE_GENRES'});
         yield put({type: 'GET_GENRES_FOR_MOVIE'});
