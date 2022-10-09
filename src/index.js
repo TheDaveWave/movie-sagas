@@ -83,7 +83,7 @@ function* addGenreToMovie(action) {
         yield axios.post(`/api/genre/add`, action.payload);
         yield console.log(action.payload);
         // since the dispatch does not have the movieId??? Need a new reducer for getting genres again.
-        yield put({type: 'GET_MOVIE_GENRES', payload: action.payload.movie_id}); // does this not work because of req.params?
+        yield put({type: 'GET_MOVIE_GENRES', payload: action.payload.movie_id}); 
         // yield put({type: 'GET_GENRES_FOR_MOVIE'});
     } catch(err) {
         console.log('Error adding new genre to movie', err);
