@@ -32,8 +32,9 @@ router.post('/add', (req, res) => {
 
 // delete genre for a movie.
 router.delete('/remove', (req, res) => {
+  // const movieId = req.params.movieId;
   const queryText = `DELETE FROM "movies_genres" 
-  WHERE "movie_id"=$1 AND "genre_id"=$2`;
+  WHERE "movie_id"=$1 AND "genre_id"=$2;`;
   console.log('in DELETE for /remove', req.body);
   pool.query(queryText, [req.body.movie_id, req.body.genre_id])
   .then(() => {
@@ -62,6 +63,7 @@ router.get('/:movieId', (req, res) => {
 
   pool.query(queryText, [movieId])
   .then(response => {
+    // console.log(`Genre(s) for movie with id:${movieId}`,response.rows);
     res.send(response.rows);
   })
   .catch(err => {

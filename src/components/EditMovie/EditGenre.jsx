@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-function EditGenre({genre}) {
+function EditGenre({name}) {
     const genres = useSelector(store => store.genres);
     const [editGenre, setEditGenre] = useState(false);
     const [selGenreId, setSelGenreId] = useState('');
@@ -14,11 +14,12 @@ function EditGenre({genre}) {
     // remove a genre from the movie.
     const removeGenre = () => {
         console.log(movieId);
+        console.log(name.genre_id);
         dispatch({
             type: 'REMOVE_MOVIE_GENRE',
             payload: {
                 movie_id: Number(movieId),
-                genre_id: Number(genre.id)
+                genre_id: Number(name.genre_id)
             }
         });
     }
