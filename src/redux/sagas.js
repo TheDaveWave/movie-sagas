@@ -12,6 +12,7 @@ function* rootSaga() {
     yield takeEvery('GIVE_MOVIE_GENRE', addGenreToMovie);
     yield takeEvery('REMOVE_MOVIE_GENRE', removeGenre);
     yield takeEvery('UPDATE_MOVIE', updateMovie);
+    yield takeEvery('SEARCH_MOVIE', searchMovie);
 }
 
 function* fetchAllMovies() {
@@ -101,6 +102,16 @@ function* updateMovie(action) {
         yield put({type: 'GET_MOVIE_DEETS', payload: action.payload.movieId});
     } catch (err) {
         console.log('Error in updating movie in saga', err);
+    }
+}
+
+// saga to get the movie fitting the search criteria.
+function* searchMovie(action) {
+    try {
+        const response = yield axios.get(`/api/movie/search/${action.payload}`);
+        yield put({type: 'SET_SEARCH', payload: response.data});
+    } catch(err) {
+        console.log('Error searching movie', err);
     }
 }
 

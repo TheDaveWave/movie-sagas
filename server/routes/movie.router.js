@@ -94,7 +94,15 @@ router.put('/:movieId', (req, res) => {
 router.get('/search/:title', (req, res) => {
   const title = req.params.title;
   const queryText = `SELECT * FROM "movies" WHERE "title"=$1;`;
-  
+
+  pool.query(queryText, [title])
+  .then(response => {
+    res.send(response.rows);
+  })
+  .catch(err => {
+    console.log('Error getting movie with title', err);
+    res.sendStatus(500);
+  });
 });
 
 module.exports = router;

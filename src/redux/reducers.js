@@ -23,6 +23,16 @@ const genres = (state = [], action) => {
     }
 }
 
+// used to store the search movie object.
+const search = (state = {}, action) => {
+    switch(action.type) {
+        case 'SET_SEARCH':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Used to store the movie object to be desplayed on the details page.
 const movieDetails = (state = {}, action) => {
     // somehow get a reducer to store current movie id to use in requests?
@@ -41,9 +51,6 @@ const movieGenres = (state = [], action) => {
     switch(action.type) {
         case 'SET_MOVIE_GENRES':
             return action.payload;
-        case 'GET_GENRES_FOR_MOVIE':
-            console.log('GET_GENRES_FOR_MOVIE',state);
-            return state;
         default:
             return state;
     }
@@ -58,7 +65,8 @@ const store = createStore(
         movies,
         genres,
         movieDetails,
-        movieGenres
+        movieGenres,
+        search
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
