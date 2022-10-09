@@ -34,30 +34,34 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
-            <button onClick={() => history.push('/form')}>Add a Movie</button>
-            <div>
-                <input type='text' value={search} onChange={evt => setSearch(evt.target.value)} placeholder='Search'/>
-                <button onClick={() => searchMovie()}>Confirm</button>
-                <button onClick={() => clearSearch()}>Clear</button>
-            </div>
-            <section className="movies">
-                {searchedMovie.length !== 0 ? 
+            <header className='list-header'>
+                <h1>MovieList</h1>
+                <button onClick={() => history.push('/form')}>Add a Movie</button>
                 <div>
-                    <h3>{searchedMovie[0].title}</h3>
-                    <img onClick={() => history.push(`/details/${searchedMovie[0].id}`)} src={searchedMovie[0].poster} alt={searchedMovie[0].title}/>
-                </div> : 
-                <>
-                    {movies.map(movie => {
-                        return (
-                            <div key={movie.id} >
-                                <h3>{movie.title}</h3>
-                                {/* When image is clicked, push to the details page. */}
-                                <img onClick={() => history.push(`/details/${movie.id}`)} src={movie.poster} alt={movie.title}/>
-                            </div>
-                        );
-                    })}
-                </>}
+                    <input type='text' value={search} onChange={evt => setSearch(evt.target.value)} placeholder='Search'/>
+                    <button onClick={() => searchMovie()}>Confirm</button>
+                    <button onClick={() => clearSearch()}>Clear</button>
+                </div>
+            </header>
+            <section className="movies">
+                <div className='movie-container'>
+                    {searchedMovie.length !== 0 ? 
+                    <div className='movie-card'>
+                        <h3>{searchedMovie[0].title}</h3>
+                        <img onClick={() => history.push(`/details/${searchedMovie[0].id}`)} src={searchedMovie[0].poster} alt={searchedMovie[0].title}/>
+                    </div> : 
+                    <>
+                        {movies.map(movie => {
+                            return (
+                                <div className='movie-card' key={movie.id} >
+                                    <h3>{movie.title}</h3>
+                                    {/* When image is clicked, push to the details page. */}
+                                    <img onClick={() => history.push(`/details/${movie.id}`)} src={movie.poster} alt={movie.title}/>
+                                </div>
+                            );
+                        })}
+                    </>}
+                </div>
             </section>
         </main>
     );
