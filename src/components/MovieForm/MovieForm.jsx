@@ -25,8 +25,10 @@ function MovieForm() {
 
     const saveMovie = () => {
         // add checks to ensure inputs are not empty.
-
-        // dispatch new movie to sagas.
+        if(!titleInput || !urlInput || !descInput || !selGenreId) {
+            alert('Please fill in all inputs');
+        } else {
+            // dispatch new movie to sagas.
         dispatch({
             type: 'ADD_MOVIE',
             payload: movieObj
@@ -40,6 +42,7 @@ function MovieForm() {
 
         // bring user to movie list page.
         history.push('/');
+        }
     }
 
 
