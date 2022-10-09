@@ -20,6 +20,7 @@ function* rootSaga() {
     yield takeEvery('GET_MOVIE_GENRES', getMovieGenres);
     yield takeEvery('ADD_MOVIE', postMovie);
     yield takeEvery('GIVE_MOVIE_GENRE', addGenreToMovie);
+    yield takeEvery('REMOVE_MOVIE_GENRE', removeGenre);
 }
 
 function* fetchAllMovies() {
@@ -57,6 +58,7 @@ function* getMovieDetails(action) {
 
 // Saga to get a specified movie's genres.
 function* getMovieGenres(action) {
+    console.log(action);
     try {
         const response = yield axios.get(`/api/genre/${action.payload}`);
         yield put({type: 'SET_MOVIE_GENRES', payload: response.data});
@@ -79,9 +81,19 @@ function* postMovie(action) {
 function* addGenreToMovie(action) {
     try {
         yield axios.post(`/api/genre/add`, action.payload);
-        yield put({type: 'GET_GENRES'});
+        yield put({type: 'GET_MOVIE_GENRES'});
     } catch(err) {
         console.log('Error adding new genre to movie', err);
+    }
+}
+
+// Saga to delete a genre from a movie.
+function* removeGenre(action) {
+    try {
+        yield axios.delete(`/api/genre/remove`, action.payload);
+        yield put({type: 'GET_MOVIE_GENRES'});
+    } catch (err) {
+        console.log('error in removing genre from movie', err);
     }
 }
 

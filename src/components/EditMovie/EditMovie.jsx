@@ -12,20 +12,30 @@ function EditMovie() {
     
     // setup local state for inputs.
     const [selGenreId, setSelGenreId] = useState('');
-    const [titleInput, setTitleInput] = useState('');
-    const [urlInput, setUrlInput] = useState('');
-    const [descInput, setDescInput] = useState('');
+    const [titleInput, setTitleInput] = useState(movieDetails.title);
+    const [urlInput, setUrlInput] = useState(movieDetails.poster);
+    const [descInput, setDescInput] = useState(movieDetails.description);
 
     // get the movie id from the route url params
     let {movieId} = useParams();
-    // console.log(movieId);
+    console.log(movieId);
 
     // define object to PUT / Update the database entry.
     const movieObj = {
         title: titleInput,
         poster: urlInput,
         description: descInput,
-        genre_id: selGenreId
+    }
+
+    // function to add genre to current movie.
+    const addNewGenre = () => {
+        dispatch({
+            type: 'GIVE_MOVIE_GENRE',
+            payload: {
+                movie_id: Number(movieId),
+                genre_id: Number(selGenreId)
+            }
+        });
     }
 
     useEffect(() => {
@@ -45,6 +55,9 @@ function EditMovie() {
         setTitleInput(movieDetails.title);
         setUrlInput(movieDetails.poster);
         setDescInput(movieDetails.description);
+        if(genres.length > 0) {
+            setSelGenreId(genres[0].id);
+        }
     }, []);
 
     return (
@@ -60,7 +73,7 @@ function EditMovie() {
                     {movieGenres.map(name => (
                         <div key={name.id}>
                             <div>{name.genre} {' '}
-                                <EditGenre genres={genres}/>
+                                <EditGenre genre={name}/>
                             </div>
                         </div>
                     ))}
@@ -70,7 +83,7 @@ function EditMovie() {
                         <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}
                 </select>
-                <button>Add Genre</button>
+                <button onClick={() => addNewGenre()}>Add Genre</button>
                 <div>
                     <button onClick={() => history.push(`/details/${movieId}`)}>Cancel</button>
                 </div>

@@ -20,20 +20,36 @@ router.get('/', (req, res) => {
 router.post('/add', (req, res) => {
   const queryText = `INSERT INTO "movies_genres" ("movie_id", "genre_id")
   VALUES ($1, $2);`
-
+  console.log('POST to add genre to movie', req.body.movie_id, req.body.genre_id);
   pool.query(queryText, [req.body.movie_id, req.body.genre_id])
   .then(() => {
     res.sendStatus(201);
   })
   .catch(err => {
-    console.log('Erroring add a genre to the movie', err);
+    console.log('Erroring adding a genre to the movie', err);
   });
+});
+
+// delete genre for a movie.
+router.delete('/remove', (req, res) => {
+  const queryText = `DELETE FROM "movies_genres" 
+  WHERE "movie_id"=$1 AND "genre_id"=$2`;
+  console.log('in DELETE', req.body);
+  pool.query(queryText, [req.body.movie_id, req.body.genre_id])
+  .then(() => {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    console.log('Error in deleting genre from movie', err);
+    res.sendStatus(500);
+  })
 });
 
 // GET all genres for a specified movie id using JOINS.
 router.get('/:movieId', (req, res) => {
   // set movieId to req.params.movieId
   const movieId = req.params.movieId;
+  console.log(movieId);
   // setup SQL query statement.
   const queryText = `SELECT "mg"."id",
   "mg"."genre_id",
