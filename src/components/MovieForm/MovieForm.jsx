@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function MovieForm() {
+    // get the list of movies to check if movie exists.
+    const movies = useSelector(store => store.movies);
+
     // setup local state to capture input values.
     const [selGenreId, setSelGenreId] = useState('');
     const [titleInput, setTitleInput] = useState('');
@@ -25,23 +28,27 @@ function MovieForm() {
 
     const saveMovie = () => {
         // add checks to ensure inputs are not empty.
+        const exists = movies.find(movie => movie.title === titleInput);
+
         if(!titleInput || !urlInput || !descInput || !selGenreId) {
             alert('Please fill in all inputs');
+        } else if (exists !== undefined) {
+            alert('Movie already exists.');
         } else {
             // dispatch new movie to sagas.
-        dispatch({
-            type: 'ADD_MOVIE',
-            payload: movieObj
-        });
+            dispatch({
+                type: 'ADD_MOVIE',
+                payload: movieObj
+            });
 
-        // reset inputs.
-        setSelGenreId('');
-        setTitleInput('');
-        setUrlInput('');
-        setDescInput('');
+            // reset inputs.
+            setSelGenreId('');
+            setTitleInput('');
+            setUrlInput('');
+            setDescInput('');
 
-        // bring user to movie list page.
-        history.push('/');
+            // bring user to movie list page.
+            history.push('/');
         }
     }
 

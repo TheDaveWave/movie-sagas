@@ -88,7 +88,13 @@ router.put('/:movieId', (req, res) => {
     console.log('Error updating movie', err);
     res.sendStatus(500);
   })
+});
 
+// get route to search for a movie with a given title.
+router.get('/search/:title', (req, res) => {
+  const title = req.params.title;
+  const queryText = `SELECT * FROM "movies" WHERE "title"=$1;`;
+  
 });
 
 module.exports = router;
