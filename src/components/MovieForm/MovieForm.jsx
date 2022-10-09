@@ -56,6 +56,7 @@ function MovieForm() {
     // fetch genres on page load.
     useEffect(() => {
         dispatch({type: 'GET_GENRES'});
+        dispatch({type: 'FETCH_MOVIES'});
     }, []);
 
     return (
