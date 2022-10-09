@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 function EditGenre({name}) {
+    // name prop is another 'name' for the current object of the movieGenres array 
+    // in the parent EditMovie.jsx.
     const genres = useSelector(store => store.genres);
     const [editGenre, setEditGenre] = useState(false);
     const [selGenreId, setSelGenreId] = useState('');
