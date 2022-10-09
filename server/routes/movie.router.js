@@ -72,4 +72,23 @@ router.post('/', (req, res) => {
   })
 })
 
+// PUT route to update movie details.
+router.put('/:movieId', (req, res) => {
+  console.log('In PUT /movie', req.body, req.params);
+  const movieId = req.params.movieId;
+  // setup SQL querytext with data sanitization.
+  const queryText = `UPDATE "movies" SET 
+  "title"=$1, "poster"=$2, "description"=$3
+  WHERE "id"=$4;`;
+  pool.query(queryText, [req.body.title, req.body.poster, req.body.description, movieId])
+  .then(response => {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    console.log('Error updating movie', err);
+    res.sendStatus(500);
+  })
+
+});
+
 module.exports = router;
