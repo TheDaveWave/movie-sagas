@@ -20,7 +20,7 @@ function App() {
           {/* Details page */}
           <Details />
         </Route>
-        <Route path='/details/edit/:movieId'>
+        <Route path='/edit/:movieId'>
           <EditMovie />
         </Route>
         <Route path='/form'>

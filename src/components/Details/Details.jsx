@@ -47,7 +47,7 @@ function Details() {
                         <p key={name.id}>{name.genre}</p>
                     ))}
                 </div>
-                <button>Edit Movie</button>
+                <button onClick={() => history.push(`/edit/${movieId}`)}>Edit Movie</button>
                 <button onClick={() => history.push('/')}>Back to List</button>
             </div>
         </section>
