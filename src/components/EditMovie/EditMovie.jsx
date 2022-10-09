@@ -31,12 +31,17 @@ function EditMovie() {
 
     // dispatch to put request to update the movie.
     const editMovie = () => {
-        dispatch({
-            type: 'UPDATE_MOVIE',
-            payload: movieObj
-        });
-        // push user back to details page.
-        history.push(`/details/${movieId}`);
+        // check to see if data is valid before dispatching.
+        if(!movieId || !titleInput || !poster || !descInput) {
+            alert('Please fill in all inputs.');
+        } else {
+            dispatch({
+                type: 'UPDATE_MOVIE',
+                payload: movieObj
+            });
+            // push user back to details page.
+            history.push(`/details/${movieId}`);
+        }
     }
 
     console.log(movieObj);
@@ -64,7 +69,6 @@ function EditMovie() {
             payload: Number(movieId)
         });
         dispatch({type: 'GET_GENRES'});
-        // dispatch({type: 'GET_GENRES_FOR_MOVIE'});
         // console.log(movieDetails);
         // set inputs to corresponding values.
         if(movieDetails.length > 0) {

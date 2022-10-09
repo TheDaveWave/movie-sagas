@@ -15,15 +15,20 @@ function EditGenre({name}) {
 
     // remove a genre from the movie.
     const removeGenre = () => {
-        console.log(movieId);
-        console.log(name.genre_id);
-        dispatch({
-            type: 'REMOVE_MOVIE_GENRE',
-            payload: {
-                movie_id: Number(movieId),
-                genre_id: Number(name.genre_id)
-            }
-        });
+        // console.log(movieId);
+        // console.log(name.genre_id);
+        // create check to insure user does not delete all of the genres.
+        if(genres.length === 1) {
+            alert('Movie must have at least one genre.');
+        } else {
+            dispatch({
+                type: 'REMOVE_MOVIE_GENRE',
+                payload: {
+                    movie_id: Number(movieId),
+                    genre_id: Number(name.genre_id)
+                }
+            });
+        } 
     }
 
 
