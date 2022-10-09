@@ -23,6 +23,7 @@ function EditMovie() {
 
     // define object to PUT / Update the database entry.
     const movieObj = {
+        movieId: Number(movieId),
         title: titleInput,
         poster: urlInput,
         description: descInput,
@@ -30,7 +31,12 @@ function EditMovie() {
 
     // dispatch to put request to update the movie.
     const editMovie = () => {
-
+        dispatch({
+            type: 'UPDATE_MOVIE',
+            payload: movieObj
+        });
+        // push user back to details page.
+        history.push(`/details/${movieId}`);
     }
 
     console.log(movieObj);
@@ -98,6 +104,7 @@ function EditMovie() {
                 <button onClick={() => addNewGenre()}>Add Genre</button>
                 <div>
                     <button onClick={() => history.push(`/details/${movieId}`)}>Cancel</button>
+                    <button onClick={()=> editMovie()}>Save</button>
                 </div>
             </div>
         </section>

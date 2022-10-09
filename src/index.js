@@ -21,6 +21,7 @@ function* rootSaga() {
     yield takeEvery('ADD_MOVIE', postMovie);
     yield takeEvery('GIVE_MOVIE_GENRE', addGenreToMovie);
     yield takeEvery('REMOVE_MOVIE_GENRE', removeGenre);
+    yield takeEvery('UPDATE_MOVIE', updateMovie);
 }
 
 function* fetchAllMovies() {
@@ -81,7 +82,7 @@ function* postMovie(action) {
 function* addGenreToMovie(action) {
     try {
         yield axios.post(`/api/genre/add`, action.payload);
-        yield console.log(action.payload);
+        // yield console.log(action.payload);
         // since the dispatch does not have the movieId??? Need a new reducer for getting genres again.
         yield put({type: 'GET_MOVIE_GENRES', payload: action.payload.movie_id}); 
         // yield put({type: 'GET_GENRES_FOR_MOVIE'});
@@ -100,6 +101,16 @@ function* removeGenre(action) {
         // yield put({type: 'GET_GENRES_FOR_MOVIE'});
     } catch (err) {
         console.log('error in removing genre from movie', err);
+    }
+}
+
+// saga to update movie details.
+function* updateMovie(action) {
+    try {
+        yield axios.put(`/api/movie/${action.payload.movieId}`, action.payload);
+        yield put({type: 'GET_MOVIE_DEETS', payload: action.payload.movieId});
+    } catch (err) {
+        console.log('Error in updating movie in saga', err);
     }
 }
 
