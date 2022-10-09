@@ -50,6 +50,7 @@ function EditMovie() {
             payload: Number(movieId)
         });
         dispatch({type: 'GET_GENRES'});
+        dispatch({type: 'GET_GENRES_FOR_MOVIE'});
 
         // set inputs to corresponding values.
         setTitleInput(movieDetails.title);

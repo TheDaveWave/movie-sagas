@@ -46,7 +46,7 @@ router.delete('/remove', (req, res) => {
   })
 });
 
-// GET all genres for a specified movie id using JOINS.
+// GET all genres for a specified movie id using SQL JOINS.
 router.get('/:movieId', (req, res) => {
   // set movieId to req.params.movieId
   const movieId = req.params.movieId;

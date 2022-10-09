@@ -26,7 +26,7 @@ router.get('/:movieId', (req, res) => {
   const queryText = `SELECT * FROM "movies" WHERE "id"=$1;`;
   pool.query(queryText, [movieId])
   .then(response => {
-    console.log('Received movie', response.rows[0]);
+    // console.log('Received movie', response.rows[0]);
     res.send(response.rows[0]);
   })
   .catch(err => {

@@ -27,7 +27,7 @@ function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
-        console.log('get all:', movies.data);
+        // console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
@@ -58,7 +58,7 @@ function* getMovieDetails(action) {
 
 // Saga to get a specified movie's genres.
 function* getMovieGenres(action) {
-    console.log(action);
+    // console.log(action);
     try {
         const response = yield axios.get(`/api/genre/${action.payload}`);
         yield put({type: 'SET_MOVIE_GENRES', payload: response.data});
@@ -137,9 +137,11 @@ const movieDetails = (state = {}, action) => {
 // Used to store the genres of a specific movie.
 const movieGenres = (state = [], action) => {
     switch(action.type) {
+        // somehow get a reducer to store current movie id to use in requests?
         case 'SET_MOVIE_GENRES':
             return action.payload;
         case 'GET_GENRES_FOR_MOVIE':
+            console.log('GET_GENRES_FOR_MOVIE',state);
             return state;
         default:
             return state;
