@@ -42,18 +42,24 @@ function MovieList() {
                 <button onClick={() => clearSearch()}>Clear</button>
             </div>
             <section className="movies">
-                {movies.map(movie => {
-                    return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            {/* When image is clicked, push to the details page. */}
-                            <img onClick={() => history.push(`/details/${movie.id}`)} src={movie.poster} alt={movie.title}/>
-                        </div>
-                    );
-                })}
+                {searchedMovie.length !== 0 ? 
+                <div>
+                    <h3>{searchedMovie[0].title}</h3>
+                    <img onClick={() => history.push(`/details/${searchedMovie[0].id}`)} src={searchedMovie[0].poster} alt={searchedMovie[0].title}/>
+                </div> : 
+                <>
+                    {movies.map(movie => {
+                        return (
+                            <div key={movie.id} >
+                                <h3>{movie.title}</h3>
+                                {/* When image is clicked, push to the details page. */}
+                                <img onClick={() => history.push(`/details/${movie.id}`)} src={movie.poster} alt={movie.title}/>
+                            </div>
+                        );
+                    })}
+                </>}
             </section>
         </main>
-
     );
 }
 

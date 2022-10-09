@@ -24,12 +24,12 @@ const genres = (state = [], action) => {
 }
 
 // used to store the search movie object.
-const search = (state = {}, action) => {
+const search = (state = [], action) => {
     switch(action.type) {
         case 'SET_SEARCH':
             return action.payload;
         case 'CLEAR_SEARCH':
-            return {};
+            return [];
         default:
             return state;
     }
