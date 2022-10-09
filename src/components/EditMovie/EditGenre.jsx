@@ -9,7 +9,7 @@ function EditGenre({genre}) {
 
     const { movieId } = useParams();
     const dispatch = useDispatch();
-    console.log(movieId);
+    // console.log(movieId);
 
     // remove a genre from the movie.
     const removeGenre = () => {

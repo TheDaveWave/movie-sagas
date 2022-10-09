@@ -18,7 +18,7 @@ function EditMovie() {
 
     // get the movie id from the route url params
     const {movieId} = useParams();
-    console.log(movieId);
+    // console.log(movieId);
 
     // define object to PUT / Update the database entry.
     const movieObj = {

@@ -11,7 +11,7 @@ function Details() {
     // setup dispatch from useDispatch()
     const dispatch = useDispatch();
     // get the movie id from the route url params
-    let { movieId } = useParams(); 
+    // let { movieId } = useParams(); 
     // console.log(movieId);
 
     useEffect(() => {
