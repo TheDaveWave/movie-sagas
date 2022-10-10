@@ -7,6 +7,7 @@ import EditGenre from "./EditGenre";
 function EditMovie() {
     // use object destructuring to pull out reducers from store.
     const { movieDetails, movieGenres, genres } = useSelector(store => store);
+    console.log(movieDetails);
     const dispatch = useDispatch();
     const history = useHistory();
     // console.log('movieDetails:', movieDetails.title, movieDetails.poster, movieDetails.description);
@@ -16,6 +17,13 @@ function EditMovie() {
     const [titleInput, setTitleInput] = useState(movieDetails.title);
     const [urlInput, setUrlInput] = useState(movieDetails.poster);
     const [descInput, setDescInput] = useState(movieDetails.description);
+
+    // !descInput && descInput === undefined
+    if(descInput !== movieDetails.description) {
+        setTitleInput(movieDetails.title);
+        setUrlInput(movieDetails.poster);
+        setDescInput(movieDetails.description);
+    }
 
     // get the movie id from the route url params
     const {movieId} = useParams();
@@ -69,7 +77,7 @@ function EditMovie() {
             payload: Number(movieId)
         });
         dispatch({type: 'GET_GENRES'});
-        // console.log(movieDetails);
+        console.log(movieDetails);
         // set inputs to corresponding values.
         if(movieDetails.length > 0) {
             setTitleInput(movieDetails.title);

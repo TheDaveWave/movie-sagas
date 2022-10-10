@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import './Details.css';
 
 function Details() {
     // get the current store of movie objects from the movies reducer.
@@ -35,20 +36,24 @@ function Details() {
 
     return (
         <section>
-            <div>
+            <div className="details-container">
+            <div className="details-box">
                 <div>
                     <h1>{movie.title}</h1>
                     <img src={movie.poster}/>
-                    <p>{movie.description}</p>
+                    <p className="movie-details">{movie.description}</p>
                 </div>
-                <div>
-                    <p>Genres:</p>
+                <div className="details-genres">
+                    <h3>Genres:</h3>
                     {movieGenres.map(name => (
                         <p key={name.id}>{name.genre}</p>
                     ))}
                 </div>
-                <button onClick={() => history.push(`/edit/${movieId}`)}>Edit Movie</button>
-                <button onClick={() => history.push('/')}>Back to List</button>
+                <div className="details-btn">
+                    <button onClick={() => history.push(`/edit/${movieId}`)}>Edit Movie</button>
+                    <button onClick={() => history.push('/')}>Back to List</button>
+                </div>
+            </div>
             </div>
         </section>
     );

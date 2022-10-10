@@ -56,6 +56,7 @@ function MovieList() {
                     </div>
                 </div>
             </header>
+            <div className='fake-main'>
             <section className="movies">
                 <div>
                 <div className='movie-container'>
@@ -78,6 +79,7 @@ function MovieList() {
                 </div>
                 </div>
             </section>
+            </div>
         </main>
     );
 }

@@ -42,6 +42,7 @@ function* getMovieDetails(action) {
     try {
         // send get request to /api/movie/:movieId route.
         const response = yield axios.get(`/api/movie/${action.payload}`);
+        // console.log(response)
         yield put({type: 'SET_MOVIE_DEETS', payload: response.data});
     } catch(err) {
         console.log('Error getting movie deets', err);

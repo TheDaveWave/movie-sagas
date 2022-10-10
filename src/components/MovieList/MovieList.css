@@ -95,17 +95,26 @@ body {
         1px 1px 0px #e3e4d9;
 }
 
+main {
+    /* padding: 0 7%; */
+}
+
+.fake-main {
+    /* margin: 0 auto; */
+    padding: 0 7%;
+}
+
 .movies {
     width: 100%;
     margin: 0 auto;
     margin-top: 30px;
-    padding: 0% 7%;
+    /* padding: 0% 8em; */
 }
 
 .movie-container {
+    /* width: fit-content; */
     display : flex;
     flex-wrap: wrap;
-    justify-content: baseline;
     align-items: flex-start;
 }
 
