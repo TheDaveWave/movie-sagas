@@ -33,18 +33,17 @@
 .details-btn button {
     cursor: pointer;
     outline: none;
-    /* border: 2px solid transparent; */
+    color: #000;
     border: 2px outset #d1d2c8;
-    /* border: 2px inset #d1d2c8; */
     background-color: transparent;
     font-size: 100%;
-    /* box-shadow: 
-        inset 2px 2px 3px 0px #d1d2c8; */
-    transition: all 0.3s ease-in-out;
+       transition: all 0.3s ease-in-out;
 }
 
 .details-btn button:hover {
     transition: all 0.3s ease-in-out;
+    color: rgb(228, 227, 227);
+    background-color: #17A398;
     border: 2px inset #d1d2c8;
-    color: rgba(0, 0, 0, 0.655);
+    box-shadow: inset 2px 2px 4px 0px #2f2f2d;
 }
