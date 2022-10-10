@@ -36,11 +36,11 @@ function EditGenre({name}) {
         <>
             {editGenre ? 
             <>
-                <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
+                {/* <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
                     {genres.map(genre => (
                     <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}
-                </select> 
+                </select>  */}
                 <button onClick={() => setEditGenre(false)}>Cancel</button>
                 <button onClick={() => removeGenre()}>Delete</button>
             </> : 
