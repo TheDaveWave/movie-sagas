@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import './MovieForm.css';
 
 function MovieForm() {
     // get the list of movies to check if movie exists.
@@ -61,22 +62,29 @@ function MovieForm() {
 
     return (
         <section>
-            <div>
-                <h1>This is the Movie Form!</h1>
-            </div>
-            <div>
-                <input type='text' placeholder='Title' value={titleInput} onChange={evt => setTitleInput(evt.target.value)}/>
-                <input type='url' placeholder='Poster URL' value={urlInput} onChange={evt => setUrlInput(evt.target.value)}/>
+            <header className='add-header'>
+                <h1>Add New Movie</h1>
+            </header>
+            <div className='add-container'>
+                <div className='add-box'>
+                <div className='add-inputs'>
+                    <input type='text' placeholder='Title' value={titleInput} onChange={evt => setTitleInput(evt.target.value)}/>
+                    <input type='url' placeholder='Poster URL' value={urlInput} onChange={evt => setUrlInput(evt.target.value)}/>
+                    <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
+                        {genres.map(genre => (
+                            <option key={genre.id} value={genre.id}>{genre.name}</option>
+                        ))}
+                    </select>
+                </div>
+                <hr />
+                <div>
                 <textarea id='form-text' name='form-text' rows='8' cols='50' value={descInput} onChange={evt => setDescInput(evt.target.value)}></textarea>
-                <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
-                    {genres.map(genre => (
-                        <option key={genre.id} value={genre.id}>{genre.name}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <button onClick={() => history.push('/')}>Cancel</button>
-                <button onClick={() => saveMovie()}>Save</button>
+                </div>
+                <div className='add-btn-box'>
+                    <button onClick={() => history.push('/')}>Cancel</button>
+                    <button onClick={() => saveMovie()}>Save</button>
+                </div>
+                </div>
             </div>
         </section>
     );

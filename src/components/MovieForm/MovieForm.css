@@ -1,0 +1,91 @@
+textarea {
+    resize: vertical;
+}
+
+.add-header {
+    background-color: #F17F29;
+    height: 40px;
+    padding: 2% 0;
+    box-shadow: 0px 4px 4px #2f2f2d;
+}
+
+.add-header h1 {
+    margin: 0;
+}
+
+.add-container {
+    margin-top: 3%;
+    width: 100vw;
+    height: 100vh;
+}
+
+.add-box {
+    margin: 0 auto;
+    width: 40%;
+    height: fit-content;
+    background-color: #F6F7EB;
+    border-radius: 10px;
+    padding: 20px 10px;
+    box-shadow: 4px 4px 6px #2f2f2d;
+}
+
+.add-box hr {
+    width: 85%;
+    border: 4px inset #17A398;
+}
+
+.add-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.add-inputs input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #F17F29;
+}
+
+.add-inputs input:focus {
+    border-bottom: 2px solid #000;
+}
+
+.add-inputs select {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 90%;
+}
+
+#form-text {
+    background-color: #EDEAD0;
+    border: 2px inset #d1d2c8;
+    outline: none;
+    box-shadow: inset 2px 2px 4px 0px #2f2f2d;
+    padding: 2px;
+}
+
+.add-btn-box {
+    margin: 2% 0;
+}
+
+.add-btn-box button {
+    cursor: pointer;
+    outline: none;
+    color: #000;
+    border: 2px solid transparent;
+    background-color: transparent;
+    font-size: 100%;
+       transition: all 0.3s ease-in-out;
+}
+
+.add-btn-box button:hover {
+    transition: all 0.3s ease-in-out;
+    color: rgb(228, 227, 227);
+    background-color: #17A398;
+    border: 2px inset #d1d2c8;
+    box-shadow: inset 2px 2px 4px 0px #2f2f2d;
+}
