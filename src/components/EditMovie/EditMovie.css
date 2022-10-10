@@ -70,3 +70,13 @@ li {
         inset 0px 0px 5px #abada4,
         inset 0px 0px 7px #bec0b6;
 }
+
+.edit-buttons button {
+    background-color: transparent;
+    border: none;
+    font-size: 100%;
+}
+
+.edit-buttons button:hover {
+    color: #F17F29;
+}

@@ -116,7 +116,7 @@ function EditMovie() {
                     <ul>
                         {movieGenres.map(name => (
                             <li key={name.id}>
-                                <div>{name.genre} {' '}
+                                <div className='edit-buttons'>{name.genre} {' '}
                                     <EditGenre name={name}/>
                                 </div>
                             </li>
