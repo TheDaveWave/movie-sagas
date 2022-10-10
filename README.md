@@ -30,4 +30,21 @@ This application is a showcase for your movie collection. You can add a new movi
 
     ![add-movie](public/preview/movie-add.png)
 
-    
+## Prerequisites
+
+-[node js](https://nodejs.org/en/)
+
+-[npm](https://docs.npmjs.com/)
+
+## Built With
+
+-[React](https://reactjs.org/)
+
+-[React-Redux](https://react-redux.js.org/)
+
+
+## Acknowledgement
+Thanks to [Emerging Digital Academy](https://emergingacademy.org/) for supplying me with the resources to complete this project.
+
+## Support
+If you have any questions, suggestions, or issues, please email me at [david.wesley.lindberg@gmail.com](www.google.com)
