@@ -7,18 +7,17 @@ import EditGenre from "./EditGenre";
 function EditMovie() {
     // use object destructuring to pull out reducers from store.
     const { movieDetails, movieGenres, genres } = useSelector(store => store);
-    console.log(movieDetails);
+    // console.log(movieDetails);
     const dispatch = useDispatch();
     const history = useHistory();
     // console.log('movieDetails:', movieDetails.title, movieDetails.poster, movieDetails.description);
 
     // setup local state for inputs.
     const [selGenreId, setSelGenreId] = useState('');
-    const [titleInput, setTitleInput] = useState(movieDetails.title);
-    const [urlInput, setUrlInput] = useState(movieDetails.poster);
-    const [descInput, setDescInput] = useState(movieDetails.description);
+    const [titleInput, setTitleInput] = useState('');
+    const [urlInput, setUrlInput] = useState('');
+    const [descInput, setDescInput] = useState('');
 
-    // !descInput && descInput === undefined
     if(descInput !== movieDetails.description) {
         setTitleInput(movieDetails.title);
         setUrlInput(movieDetails.poster);
@@ -79,11 +78,11 @@ function EditMovie() {
         dispatch({type: 'GET_GENRES'});
         console.log(movieDetails);
         // set inputs to corresponding values.
-        if(movieDetails.length > 0) {
-            setTitleInput(movieDetails.title);
-            setUrlInput(movieDetails.poster);
-            setDescInput(movieDetails.description);
-        }
+        // if(movieDetails.length > 0) {
+        //     // setTitleInput(movieDetails.title);
+        //     // setUrlInput(movieDetails.poster);
+        //     // setDescInput(movieDetails.description);
+        // }
         if(genres.length > 0) {
             setSelGenreId(genres[0].id);
         }
