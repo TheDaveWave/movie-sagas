@@ -95,13 +95,10 @@ body {
         1px 1px 0px #e3e4d9;
 }
 
-main {
-    /* padding: 0 7%; */
-}
-
 .fake-main {
-    /* margin: 0 auto; */
-    padding: 0 7%;
+    margin: 0 auto;
+    /* padding: 0 7%; */
+    width: 90%;
 }
 
 .movies {
@@ -116,6 +113,10 @@ main {
     display : flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    /* centers items in flexbox but does not allow
+    for items on new row to be attached to the left of 
+    the flex box. */
+    justify-content: center;
 }
 
 .movie-card {

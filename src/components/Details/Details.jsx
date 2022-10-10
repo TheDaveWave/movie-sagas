@@ -40,7 +40,7 @@ function Details() {
             <div className="details-box">
                 <div>
                     <h1>{movie.title}</h1>
-                    <img src={movie.poster}/>
+                    <img className="details-img" src={movie.poster}/>
                     <p className="movie-details">{movie.description}</p>
                 </div>
                 <div className="details-genres">

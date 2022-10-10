@@ -14,11 +14,19 @@
     box-shadow: 4px 4px 6px #2f2f2d;
 }
 
-.details-box div img {
-    border: 3px solid #2f2f2d;
+.details-img {
+    width: 185px;
+    height: 258px;
+    border: 4px solid #d1d2c8;
+    border-radius: 10px;
 }
 
 .movie-details {
     margin: 2% auto;
     width: 60%;
+}
+
+.details-btn {
+    margin: 2%;
+    
 }
