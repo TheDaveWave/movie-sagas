@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import EditGenre from "./EditGenre";
 import '../MovieForm/MovieForm.css';
 import './EditMovie.css';
+import '../Details/Details.css';
 
 function EditMovie() {
     // use object destructuring to pull out reducers from store.
@@ -109,23 +110,28 @@ function EditMovie() {
                 <div>
                 <textarea id='form-text' name='form-text' rows='8' cols='50' value={descInput} onChange={evt => setDescInput(evt.target.value)}></textarea>
                 </div>
-                <div>
-                    <p>Genres:</p>
-                    {movieGenres.map(name => (
-                        <div key={name.id}>
-                            <div>{name.genre} {' '}
-                                <EditGenre name={name}/>
-                            </div>
-                        </div>
-                    ))}
+                <div className='edit-genre'>
+                    <h3>Genres:</h3>
+                    <hr />
+                    <ul>
+                        {movieGenres.map(name => (
+                            <li key={name.id}>
+                                <div>{name.genre} {' '}
+                                    <EditGenre name={name}/>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
+                <div className='edit-select'>
                 <select className='genre-select' value={selGenreId} onChange={evt => setSelGenreId(Number(evt.target.value))}>
                     {genres.map(genre => (
                         <option key={genre.id} value={genre.id}>{genre.name}</option>
                     ))}
                 </select>
-                <button onClick={() => addNewGenre()}>Add Genre</button>
-                <div>
+                <button className='edit-add' onClick={() => addNewGenre()}>+</button>
+                </div>
+                <div className='details-btn'>
                     <button onClick={() => history.push(`/details/${movieId}`)}>Cancel</button>
                     <button onClick={()=> editMovie()}>Save</button>
                 </div>
