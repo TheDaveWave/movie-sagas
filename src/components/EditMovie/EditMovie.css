@@ -1,0 +1,24 @@
+.edit-top {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#title-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #17A398;
+    font-size: 110%;
+    margin-bottom: 1%;
+    /* width: ; */
+}
+
+.edit-img {
+    margin: 1% 0;
+}
+
+.edit-img img {
+    width: 185px;
+    height: 258px;
+    border: 4px solid #d1d2c8;
+    border-radius: 10px;
+}

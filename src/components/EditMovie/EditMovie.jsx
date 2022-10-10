@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import EditGenre from "./EditGenre";
+import '../MovieForm/MovieForm.css';
+import './EditMovie.css';
 
 function EditMovie() {
     // use object destructuring to pull out reducers from store.
@@ -91,12 +93,22 @@ function EditMovie() {
 
     return (
         <section>
-            <h1>EDIT THIS!</h1>
-            <div>
-                <input type='text' placeholder='Title' value={titleInput} onChange={evt => setTitleInput(evt.target.value)}/>
-                <img src={movieDetails.poster}/>
-                <input type='url' placeholder='Poster URL' value={urlInput} onChange={evt => setUrlInput(evt.target.value)}/>
+            <header className='add-header'>
+                <h1>Edit Movie</h1>
+            </header>
+            <div className='add-container'>
+                <div className='add-box'>
+                <div className='edit-top'>
+                    <input id='title-input' type='text' placeholder='Title' value={titleInput} onChange={evt => setTitleInput(evt.target.value)}/>
+                    <div className='edit-img'>
+                    <img src={movieDetails.poster}/>
+                    </div>
+                    <input type='url' placeholder='Poster URL' value={urlInput} onChange={evt => setUrlInput(evt.target.value)}/>
+                </div>
+                <hr />
+                <div>
                 <textarea id='form-text' name='form-text' rows='8' cols='50' value={descInput} onChange={evt => setDescInput(evt.target.value)}></textarea>
+                </div>
                 <div>
                     <p>Genres:</p>
                     {movieGenres.map(name => (
@@ -116,6 +128,7 @@ function EditMovie() {
                 <div>
                     <button onClick={() => history.push(`/details/${movieId}`)}>Cancel</button>
                     <button onClick={()=> editMovie()}>Save</button>
+                </div>
                 </div>
             </div>
         </section>
